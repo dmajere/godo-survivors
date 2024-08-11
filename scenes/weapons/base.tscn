@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxpp3ebjp7llt"]
+
+[ext_resource type="Script" path="res://scenes/weapons/base.gd" id="1_o1oeb"]
+
+[node name="Weapon" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_o1oeb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Image" type="Sprite2D" parent="."]
+
+[node name="TTL" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TTL" to="." method="_on_ttl_timeout"]

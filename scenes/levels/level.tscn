@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://befivtvyne3ny"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_4nqxk"]
+[ext_resource type="PackedScene" uid="uid://r6js18m7wsk6" path="res://scenes/player/human.tscn" id="1_c5vih"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_4nqxk")
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[node name="Human" parent="." instance=ExtResource("1_c5vih")]
+position = Vector2(569, 350)
+scale = Vector2(2, 2)
+BASE_SPEED = 15
+
+[connection signal="attack_signal" from="Human" to="." method="_on_human_attack_signal"]

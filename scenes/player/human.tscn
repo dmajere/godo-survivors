@@ -1,0 +1,50 @@
+[gd_scene load_steps=13 format=3 uid="uid://r6js18m7wsk6"]
+
+[ext_resource type="PackedScene" uid="uid://b38tkddlyck0a" path="res://scenes/player/base.tscn" id="1_co3cn"]
+[ext_resource type="Script" path="res://scenes/player/human.gd" id="2_1r81u"]
+[ext_resource type="Texture2D" uid="uid://bu4oq8mwipvdj" path="res://graphics/player/base/halfling_male.png" id="2_mi35g"]
+[ext_resource type="Texture2D" uid="uid://dygyuvypxepdp" path="res://graphics/player/hair/frodo.png" id="3_83upt"]
+[ext_resource type="PackedScene" uid="uid://baeu1k1lu5v7" path="res://scenes/weapons/javelin.tscn" id="3_chyoa"]
+[ext_resource type="Texture2D" uid="uid://cnpe5tafqy828" path="res://graphics/player/legs/leg_armor_1.png" id="4_bkcpn"]
+[ext_resource type="Texture2D" uid="uid://csx4qxssquapp" path="res://graphics/player/boots/middle_brown_3.png" id="5_b7cn7"]
+[ext_resource type="Texture2D" uid="uid://bu6ngvw2ajoom" path="res://graphics/player/body/lears_chain_mail.png" id="6_3g6nr"]
+[ext_resource type="Texture2D" uid="uid://dxh1s2se4yymt" path="res://graphics/player/gloves/glove_brown.png" id="7_xwgdr"]
+[ext_resource type="Texture2D" uid="uid://byhjxcg05h3or" path="res://graphics/player/hand_left/buckler_round_2.png" id="8_fs0on"]
+[ext_resource type="Texture2D" uid="uid://cb3pb7dde5f0x" path="res://graphics/player/hand_right/axe.png" id="9_q3mi5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_345oq"]
+size = Vector2(22, 30)
+
+[node name="Human" instance=ExtResource("1_co3cn")]
+script = ExtResource("2_1r81u")
+BASE_SPEED = 300
+BASE_ATTACK_RATE = 10
+BASE_WEAPON = ExtResource("3_chyoa")
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_345oq")
+
+[node name="Body" parent="." index="1"]
+texture = ExtResource("2_mi35g")
+
+[node name="Hair" parent="Body" index="0"]
+texture = ExtResource("3_83upt")
+
+[node name="Legs" parent="." index="2"]
+texture = ExtResource("4_bkcpn")
+
+[node name="Boots" parent="." index="3"]
+texture = ExtResource("5_b7cn7")
+
+[node name="Armor" parent="." index="4"]
+texture = ExtResource("6_3g6nr")
+
+[node name="Hands" parent="." index="5"]
+texture = ExtResource("7_xwgdr")
+
+[node name="LeftHand" parent="." index="6"]
+texture = ExtResource("8_fs0on")
+
+[node name="RightHand" parent="." index="7"]
+texture = ExtResource("9_q3mi5")

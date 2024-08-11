@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b38tkddlyck0a"]
+
+[ext_resource type="Script" path="res://scenes/player/base.gd" id="1_hlijj"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_hlijj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="."]
+
+[node name="Hair" type="Sprite2D" parent="Body"]
+
+[node name="Beard" type="Sprite2D" parent="Body"]
+
+[node name="Legs" type="Sprite2D" parent="."]
+
+[node name="Boots" type="Sprite2D" parent="."]
+
+[node name="Armor" type="Sprite2D" parent="."]
+
+[node name="Hands" type="Sprite2D" parent="."]
+
+[node name="LeftHand" type="Sprite2D" parent="."]
+
+[node name="RightHand" type="Sprite2D" parent="."]
+
+[node name="AttackTimers" type="Node2D" parent="."]
