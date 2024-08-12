@@ -1,28 +1,37 @@
-[gd_scene load_steps=3 format=3 uid="uid://befivtvyne3ny"]
+[gd_scene load_steps=4 format=3 uid="uid://befivtvyne3ny"]
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_4nqxk"]
 [ext_resource type="PackedScene" uid="uid://r6js18m7wsk6" path="res://scenes/player/human.tscn" id="1_c5vih"]
+[ext_resource type="PackedScene" uid="uid://b32k5vyhscay8" path="res://scenes/UI/level_up.tscn" id="2_nrmuj"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_4nqxk")
 
+[node name="PopUpMenu" type="CanvasLayer" parent="."]
+
+[node name="LevelUpMenu" parent="PopUpMenu" instance=ExtResource("2_nrmuj")]
+
 [node name="Items" type="Node2D" parent="."]
 
-[node name="Enemies" type="Node2D" parent="."]
+[node name="Moving" type="Node2D" parent="."]
 
-[node name="SpawnTimer" type="Timer" parent="Enemies"]
+[node name="Enemies" type="Node2D" parent="Moving"]
+
+[node name="SpawnTimer" type="Timer" parent="Moving/Enemies"]
 wait_time = 3.0
 autostart = true
 
-[node name="Projectiles" type="Node2D" parent="."]
+[node name="Projectiles" type="Node2D" parent="Moving"]
 metadata/_edit_lock_ = true
 
-[node name="Human" parent="." instance=ExtResource("1_c5vih")]
+[node name="Human" parent="Moving" instance=ExtResource("1_c5vih")]
 position = Vector2(569, 350)
 scale = Vector2(4, 4)
 collision_mask = 1
 BASE_SPEED = 15
 
-[connection signal="timeout" from="Enemies/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="attack_signal" from="Human" to="." method="_on_human_attack_signal"]
-[connection signal="player_death" from="Human" to="." method="_on_human_player_death"]
+[connection signal="closed" from="PopUpMenu/LevelUpMenu" to="." method="_on_level_up_menu_closed"]
+[connection signal="timeout" from="Moving/Enemies/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="attack_signal" from="Moving/Human" to="." method="_on_human_attack_signal"]
+[connection signal="player_death" from="Moving/Human" to="." method="_on_human_player_death"]
+[connection signal="player_level" from="Moving/Human" to="." method="_on_human_player_level"]

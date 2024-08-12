@@ -4,9 +4,9 @@ class_name Player
 var is_player: bool = true
 signal attack_signal(weapon: PackedScene, position, direction)
 signal player_death
+signal player_level
 
 @export var BASE_SPEED: int;
-@export var BASE_ATTACK_RATE: int;
 @export var BASE_WEAPON: PackedScene;
 @export var BASE_KNOCKBACK: int = 50;
 @export var BASE_HEALTH: int = 100;
@@ -18,7 +18,7 @@ var KNOCKBACK: int;
 var WEAPONS: Array;
 var EXP_RATE: int;
 @onready var Experience: int = 0
-@onready var EXP_TO_NEXT_LEVEL: int = 100
+@onready var EXP_TO_NEXT_LEVEL: int = 10
 
 class AttackCooldownTimer extends Timer:
 	var weapon: PackedScene;
@@ -65,15 +65,18 @@ func hit(_damage: int) -> void:
 			player_death.emit()
 
 func add_item(item_type: Globals.ItemType) -> void:
-	if item_type == Globals.ItemType.EXP_SMALL:
+	# TODO: add other item types
+	if item_type == Globals.ItemType.SPEED_INC:
+		SPEED += 10
+	elif item_type == Globals.ItemType.HEALTH_INC:
+		HEALTH += 10
+	elif item_type == Globals.ItemType.KNOCKBACK_INC:
+		KNOCKBACK += 10
+	elif item_type == Globals.ItemType.EXP_SMALL:
 		Experience += 10 * EXP_RATE
 		if Experience >= EXP_TO_NEXT_LEVEL:
-			level_up()
-			
-func level_up():
-	# pick rand 3 bonuses
-	# draw UI
-	# wait input
-	# apply bonus
-	# recal next level
-	pass
+			player_level.emit()
+			# TODO: increase next level cap
+
+func get_camera() -> Camera2D:
+	return $Camera2D

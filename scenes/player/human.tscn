@@ -18,12 +18,12 @@ size = Vector2(22, 30)
 [node name="Human" instance=ExtResource("1_co3cn")]
 script = ExtResource("2_1r81u")
 BASE_SPEED = 300
-BASE_ATTACK_RATE = 10
 BASE_WEAPON = ExtResource("3_chyoa")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_345oq")
+metadata/_edit_lock_ = true
 
 [node name="Body" parent="." index="1"]
 texture = ExtResource("2_mi35g")
@@ -38,6 +38,7 @@ texture = ExtResource("4_bkcpn")
 texture = ExtResource("5_b7cn7")
 
 [node name="Armor" parent="." index="4"]
+position = Vector2(0, -1)
 texture = ExtResource("6_3g6nr")
 
 [node name="Hands" parent="." index="5"]
@@ -48,3 +49,9 @@ texture = ExtResource("8_fs0on")
 
 [node name="RightHand" parent="." index="7"]
 texture = ExtResource("9_q3mi5")
+
+[node name="AttackTimers" parent="." index="8"]
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" parent="." index="10"]
+metadata/_edit_lock_ = true
