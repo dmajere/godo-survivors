@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://xdjc2xf02dx2"]
+
+[ext_resource type="PackedScene" uid="uid://7d7uldere0" path="res://scenes/enemies/base.tscn" id="1_wnrp2"]
+[ext_resource type="Texture2D" uid="uid://fee2a524httr" path="res://graphics/monster/eyes/eye_of_devastation_new.png" id="2_4euje"]
+[ext_resource type="Script" path="res://scenes/enemies/green_eye.gd" id="2_odfq8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t6hn7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ng1iv"]
+radius = 12.0
+
+[node name="GreenEye" instance=ExtResource("1_wnrp2")]
+script = ExtResource("2_odfq8")
+HEALTH = 20
+SPEED = 30
+ATTACK_RATE = 10
+DAMAGE = 10
+
+[node name="Image" parent="." index="0"]
+position = Vector2(0, 1)
+texture = ExtResource("2_4euje")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_t6hn7")
+
+[node name="AttackArea" parent="." index="3"]
+collision_mask = 3
+
+[node name="CollisionShape2D" parent="AttackArea" index="0"]
+shape = SubResource("CircleShape2D_ng1iv")

@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Survivors"
+run/main_scene="res://scenes/levels/level.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Globals="*res://globals/globals.gd"
 
 [input]
 

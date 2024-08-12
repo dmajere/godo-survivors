@@ -7,6 +7,7 @@ enum WEAPON_TYPE {MELLE, RANGE}
 @export var ATTACK_RATE: int;
 @export var ATTACK_DURATION: float;
 @export var TYPE: WEAPON_TYPE;
+@export var PIERCE: int;
 @export var PROJECTILE_MOVE_SPEED: int;
 
 var direction: Vector2 = Vector2.ZERO;
@@ -22,8 +23,13 @@ func _process(delta):
 func _on_ttl_timeout():
 	queue_free()
 
-func _on_body_entered(body):
-	body.hit(DAMAGE)
+func _on_body_entered(body):	
+	if "hit" in body:
+		if body.hit(DAMAGE):
+			PIERCE -= 1
+		
+	if PIERCE == 0:
+		queue_free()
 
 func get_texture_size() -> Vector2:
 	return $Image.texture.get_size()
