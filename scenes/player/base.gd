@@ -3,13 +3,16 @@ class_name Player
 
 var is_player: bool = true
 signal attack_signal(weapon: PackedScene, position, direction)
+signal player_death
 
 @export var BASE_SPEED: int;
 @export var BASE_ATTACK_RATE: int;
 @export var BASE_WEAPON: PackedScene;
 @export var BASE_KNOCKBACK: int = 50;
+@export var BASE_HEALTH: int = 100;
 
 var SPEED: int;
+var HEALTH: int;
 var KNOCKBACK: int;
 var WEAPONS: Array;
 
@@ -19,6 +22,7 @@ class AttackCooldownTimer extends Timer:
 func _ready():
 	SPEED = BASE_SPEED
 	KNOCKBACK = BASE_KNOCKBACK
+	HEALTH = BASE_HEALTH
 	Globals.player_position = global_position
 	
 	if BASE_WEAPON:
@@ -53,4 +57,7 @@ func attack(weapon: PackedScene) -> void:
 	attack_signal.emit(weapon, global_position, direction)
 
 func hit(_damage: int) -> void:
-	pass
+	if $Invulnerability.is_stopped():
+		HEALTH -= _damage
+		if HEALTH <= 0:
+			player_death.emit()

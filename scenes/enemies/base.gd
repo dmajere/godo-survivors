@@ -27,6 +27,8 @@ func hit(damage: int) -> bool:
 	return false
 		
 func _on_attack_area_body_entered(body):
+	# We use separate Area2d node for player hit detection
+	# since its easier than detecting Char to Char collision
 	if "is_player" in body:
 		body.hit(DAMAGE)
 		var direction = (position - body.position).normalized()
