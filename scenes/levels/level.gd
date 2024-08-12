@@ -1,5 +1,6 @@
 extends Node2D
 
+var item: PackedScene = preload("res://scenes/items/base.tscn")
 var green_eye: PackedScene = preload("res://scenes/enemies/green_eye.tscn")
 
 func _on_human_attack_signal(weapon: PackedScene, pos: Vector2, dir:Vector2) -> void:
@@ -8,6 +9,13 @@ func _on_human_attack_signal(weapon: PackedScene, pos: Vector2, dir:Vector2) -> 
 	instance.scale = Vector2(4, 4)
 	$Projectiles.call_deferred("add_child", instance)
 
+func spawn_experience(pos: Vector2):
+	# TODO: random drop probability
+	# TODO: rare big exp drop
+	var instance = item.instantiate() as Item
+	instance.item_type = Globals.ItemType.EXP_SMALL
+	instance.position = pos
+	$Items.call_deferred("add_child", instance)
 
 func _on_spawn_timer_timeout():
 	var pos = get_random_offscreen_position()
@@ -15,6 +23,7 @@ func _on_spawn_timer_timeout():
 	var instance = green_eye.instantiate() as Monster
 	instance.position = pos
 	instance.scale = Vector2(3, 3)
+	instance.enemy_died.connect(spawn_experience)
 	$Enemies.call_deferred("add_child", instance)
 
 func get_random_offscreen_position() -> Vector2:

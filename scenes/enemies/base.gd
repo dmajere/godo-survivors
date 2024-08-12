@@ -21,7 +21,7 @@ func hit(damage: int) -> bool:
 		$Timers/Invulnarability.start()
 		HEALTH -= damage
 		if HEALTH <= 0:
-			enemy_died.emit(position)
+			enemy_died.emit(global_position)
 			queue_free() 
 		return true
 	return false

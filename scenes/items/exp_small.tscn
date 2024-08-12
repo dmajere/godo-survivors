@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://mfg1mkeji7s4"]
+
+[ext_resource type="PackedScene" uid="uid://ctkbss7t52m37" path="res://scenes/items/base.tscn" id="1_2tu26"]
+[ext_resource type="Texture2D" uid="uid://4jqorh27xa6t" path="res://graphics/item/misc/misc_crystal_old.png" id="2_vc7jq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7td0k"]
+radius = 11.0
+
+[node name="ExpSmall" instance=ExtResource("1_2tu26")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_vc7jq")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_7td0k")
