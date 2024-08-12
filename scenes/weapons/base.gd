@@ -9,6 +9,7 @@ enum WEAPON_TYPE {MELLE, RANGE}
 @export var TYPE: WEAPON_TYPE;
 @export var PIERCE: int;
 @export var PROJECTILE_MOVE_SPEED: int;
+@export var icon: Texture2D;
 
 var direction: Vector2 = Vector2.ZERO;
 

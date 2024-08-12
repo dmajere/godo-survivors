@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1tnxgsabl45i"]
+
+[ext_resource type="Script" path="res://scenes/UI/weapon_list.gd" id="1_s0b5j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubggc"]
+
+[node name="WeaponList" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_s0b5j")
+
+[node name="Container" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 76.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ubggc")
+
+[node name="MarginPatch" type="NinePatchRect" parent="Container"]
+layout_mode = 2
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="HBox" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="LeftMargin" type="Control" parent="Container/HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Col1" type="VBoxContainer" parent="Container/HBox"]
+layout_mode = 2
+
+[node name="TopMargin" type="Control" parent="Container/HBox/Col1"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Container/HBox/Col1"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Container/HBox/Col1"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BottomMargin" type="Control" parent="Container/HBox/Col1"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Col2" type="VBoxContainer" parent="Container/HBox"]
+layout_mode = 2
+
+[node name="TopMargin" type="Control" parent="Container/HBox/Col2"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Container/HBox/Col2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Container/HBox/Col2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BottomMargin" type="Control" parent="Container/HBox/Col2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="Col3" type="VBoxContainer" parent="Container/HBox"]
+layout_mode = 2
+
+[node name="TopMargin" type="Control" parent="Container/HBox/Col3"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Panel" type="Panel" parent="Container/HBox/Col3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="Container/HBox/Col3"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="BottomMargin" type="Control" parent="Container/HBox/Col3"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="RightMargin" type="Control" parent="Container/HBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://baeu1k1lu5v7"]
+[gd_scene load_steps=6 format=3 uid="uid://baeu1k1lu5v7"]
 
 [ext_resource type="PackedScene" uid="uid://bxpp3ebjp7llt" path="res://scenes/weapons/base.tscn" id="1_bn7x2"]
 [ext_resource type="Script" path="res://scenes/weapons/javelin.gd" id="2_0eu0k"]
 [ext_resource type="Texture2D" uid="uid://dwlid4n1ki1s2" path="res://graphics/effect/javelin_2.png" id="2_bohwp"]
+[ext_resource type="Texture2D" uid="uid://2uby6v3rlieq" path="res://graphics/item/weapon/spear_1_elven.png" id="3_uw0kn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4i7f"]
 size = Vector2(30, 4)
@@ -14,6 +15,7 @@ ATTACK_RATE = 10
 ATTACK_DURATION = 1.5
 TYPE = 1
 PROJECTILE_MOVE_SPEED = 1000
+icon = ExtResource("3_uw0kn")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_p4i7f")

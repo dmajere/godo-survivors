@@ -12,7 +12,7 @@ var knockback_icon = load("res://graphics/gui/skills/fighting.png")
 @onready var player = $Moving/Human
 @onready var enemies = $Moving/Enemies
 @onready var projectiles = $Moving/Projectiles
-@onready var level_up_menu = $PopUpMenu/LevelUpMenu
+@onready var level_up_menu = $InGameMenu/LevelUpMenu
 @onready var Option = level_up_menu.Option
 @onready var level_up_options: Array = [
 	Option.new(
@@ -33,9 +33,12 @@ var knockback_icon = load("res://graphics/gui/skills/fighting.png")
 ]
 
 func _ready():
-	pass
-	# _init_base_level_up_options()
-
+	# TODO: figure out how to have class properties, to avoid 
+	# object instantiation to read icon
+	for weapon: PackedScene in player.WEAPONS:
+		var _instance = weapon.instantiate() as Weapon
+		$InGameMenu/WeaponList.append(_instance.icon)
+		_instance.queue_free()
 	
 func _on_human_attack_signal(weapon: PackedScene, pos: Vector2, dir:Vector2) -> void:
 	var instance = weapon.instantiate() as Weapon
