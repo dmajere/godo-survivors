@@ -5,10 +5,10 @@ class Option:
 	var tooltip: String
 	var callback: Callable
 	
-	func _init(texture: CompressedTexture2D, tooltip: String, callback: Callable) -> void:
-		self.texture = texture
-		self.tooltip = tooltip
-		self.callback = callback
+	func _init(image: CompressedTexture2D, ttip: String, cb: Callable) -> void:
+		self.texture = image
+		self.tooltip = ttip
+		self.callback = cb
 
 signal closed
 

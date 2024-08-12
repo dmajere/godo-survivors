@@ -110,9 +110,9 @@ func get_random_offscreen_position() -> Vector2:
 		)
 	]
 	var sides = [left, right, top, bottom]
-	var range = sides[randi()%sides.size()]
-	var x = range[0]
-	var y = range[1]
+	var value_range = sides[randi()%sides.size()]
+	var x = value_range[0]
+	var y = value_range[1]
 	return Vector2(
 		randi_range(x.x, x.y),
 		randi_range(y.x, y.y)
