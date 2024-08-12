@@ -2,16 +2,18 @@
 
 [ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_4nqxk"]
 [ext_resource type="PackedScene" uid="uid://r6js18m7wsk6" path="res://scenes/player/human.tscn" id="1_c5vih"]
-[ext_resource type="PackedScene" uid="uid://xdjc2xf02dx2" path="res://scenes/enemies/green_eye.tscn" id="2_tdq4j"]
+[ext_resource type="PackedScene" uid="uid://ditepaqsiurjl" path="res://scenes/enemies/spawn_points.tscn" id="2_746us"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_4nqxk")
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="GreenEye" parent="Enemies" instance=ExtResource("2_tdq4j")]
-collision_mask = 7
-SPEED = 10
+[node name="SpawnTimer" type="Timer" parent="Enemies"]
+wait_time = 3.0
+autostart = true
+
+[node name="SpawnPoints" parent="Enemies" instance=ExtResource("2_746us")]
 
 [node name="Projectiles" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
@@ -22,4 +24,5 @@ scale = Vector2(2, 2)
 collision_mask = 1
 BASE_SPEED = 15
 
+[connection signal="timeout" from="Enemies/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="attack_signal" from="Human" to="." method="_on_human_attack_signal"]
