@@ -1,0 +1,6 @@
+Weapons
+
+* whip: front area2d, no movement
+* wand: sends projectile at some rate to closest enemy
+* knife: fire in front
+* bible: cicles around

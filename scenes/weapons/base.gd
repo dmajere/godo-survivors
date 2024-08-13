@@ -1,40 +1,50 @@
-extends Area2D
+extends Node2D
 class_name Weapon
 
-enum WEAPON_TYPE {MELLE, RANGE}
+signal shoot_projectile(projectile: Node2D)
+var CooldownBase: float = 10.0
 
 @export var DAMAGE: int;
-@export var ATTACK_RATE: int;
-@export var ATTACK_DURATION: float;
-@export var TYPE: WEAPON_TYPE;
+@export var RATE: float;
+@export var DURATION: float;
 @export var PIERCE: int;
-@export var PROJECTILE_MOVE_SPEED: int;
-@export var icon: Texture2D;
+@export var PROJECTILE_SPEED: int;
+@onready var projectile: PackedScene;
 
-var direction: Vector2 = Vector2.ZERO;
+func _ready() -> void:
+	$Cooldown.wait_time = CooldownBase / RATE
+	$Cooldown.start()
+	print($Cooldown.wait_time)
 
-func _ready():
-	$TTL.wait_time = ATTACK_DURATION
-	$TTL.start()
+func _on_cooldown_timeout() -> void:
+	shoot_projectile.emit(make_projectile())
+
+func make_projectile() -> Node2D:
+	var instance = projectile.instantiate()
+	# Basic parameters
+	instance.DURATION = DURATION
+	instance.DAMAGE = DAMAGE
+	instance.PIERCE = PIERCE
+	instance.SPEED = PROJECTILE_SPEED
 	
-func _process(delta):
-	if TYPE == WEAPON_TYPE.RANGE:
-		position += direction * PROJECTILE_MOVE_SPEED * delta
-	
-func _on_ttl_timeout():
-	queue_free()
+	# Movement parameters
+	var direction = get_target_direction()
 
-func _on_body_entered(body):	
-	if "hit" in body:
-		if body.hit(DAMAGE):
-			PIERCE -= 1
+	instance.direction = direction
+	instance.position = Globals.player_position + get_projectile_offset(direction)
+	instance.rotation = direction.angle()
 		
-	if PIERCE == 0:
-		queue_free()
+	return instance
 
-func get_texture_size() -> Vector2:
-	return $Image.texture.get_size()
+func get_target_direction() -> Vector2:
+	return Vector2.ZERO
 	
-func set_attack_position(_pos: Vector2, _dir: Vector2) -> void:
-	pass
-	
+func get_projectile_offset(_direction: Vector2) -> Vector2:
+	return Vector2.ZERO
+
+func set_rate(value: float) -> void:
+	RATE = value
+	$Cooldown.wait_time = CooldownBase / RATE
+
+func get_icon() -> Texture2D:
+	return $Icon.texture

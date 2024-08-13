@@ -13,7 +13,6 @@ script = ExtResource("2_0eu0k")
 DAMAGE = 10
 ATTACK_RATE = 10
 ATTACK_DURATION = 1.5
-TYPE = 1
 PROJECTILE_MOVE_SPEED = 1000
 icon = ExtResource("3_uw0kn")
 

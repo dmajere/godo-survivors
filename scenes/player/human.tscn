@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/player/human.gd" id="2_1r81u"]
 [ext_resource type="Texture2D" uid="uid://bu4oq8mwipvdj" path="res://graphics/player/base/halfling_male.png" id="2_mi35g"]
 [ext_resource type="Texture2D" uid="uid://dygyuvypxepdp" path="res://graphics/player/hair/frodo.png" id="3_83upt"]
-[ext_resource type="PackedScene" uid="uid://baeu1k1lu5v7" path="res://scenes/weapons/javelin.tscn" id="3_chyoa"]
+[ext_resource type="PackedScene" uid="uid://dacn7tn6v1djl" path="res://scenes/weapons/bow.tscn" id="3_eoyqk"]
 [ext_resource type="Texture2D" uid="uid://cnpe5tafqy828" path="res://graphics/player/legs/leg_armor_1.png" id="4_bkcpn"]
 [ext_resource type="Texture2D" uid="uid://csx4qxssquapp" path="res://graphics/player/boots/middle_brown_3.png" id="5_b7cn7"]
 [ext_resource type="Texture2D" uid="uid://bu6ngvw2ajoom" path="res://graphics/player/body/lears_chain_mail.png" id="6_3g6nr"]
@@ -18,7 +18,7 @@ size = Vector2(22, 30)
 [node name="Human" instance=ExtResource("1_co3cn")]
 script = ExtResource("2_1r81u")
 BASE_SPEED = 300
-BASE_WEAPON = ExtResource("3_chyoa")
+BASE_WEAPON = ExtResource("3_eoyqk")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 1)

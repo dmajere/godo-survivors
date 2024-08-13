@@ -33,3 +33,5 @@ wait_time = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
+
+[node name="Inventory" type="Node2D" parent="."]

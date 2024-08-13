@@ -38,7 +38,7 @@ size_flags_vertical = 4
 [node name="Enemies" type="Node2D" parent="Moving"]
 
 [node name="SpawnTimer" type="Timer" parent="Moving/Enemies"]
-wait_time = 3.0
+wait_time = 2.0
 autostart = true
 
 [node name="Projectiles" type="Node2D" parent="Moving"]
@@ -52,6 +52,7 @@ BASE_SPEED = 15
 
 [connection signal="closed" from="InGameMenu/LevelUpMenu" to="." method="_on_level_up_menu_closed"]
 [connection signal="timeout" from="Moving/Enemies/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="attack_signal" from="Moving/Human" to="." method="_on_human_attack_signal"]
+[connection signal="player_add_weapon" from="Moving/Human" to="." method="_on_human_player_add_weapon"]
+[connection signal="player_attack" from="Moving/Human" to="." method="_on_human_player_attack"]
 [connection signal="player_death" from="Moving/Human" to="." method="_on_human_player_death"]
 [connection signal="player_level" from="Moving/Human" to="." method="_on_human_player_level"]

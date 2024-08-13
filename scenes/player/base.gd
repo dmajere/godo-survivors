@@ -2,9 +2,10 @@ extends CharacterBody2D
 class_name Player
 
 var is_player: bool = true
-signal attack_signal(weapon: PackedScene, position, direction)
 signal player_death
 signal player_level
+signal player_attack(projectile: Node2D)
+signal player_add_weapon(icon)
 
 @export var BASE_SPEED: int;
 @export var BASE_WEAPON: PackedScene;
@@ -31,32 +32,20 @@ func _ready():
 	Globals.player_position = global_position
 	
 	if BASE_WEAPON:
-		init_weapon(BASE_WEAPON)
+		add_weapon(BASE_WEAPON)
 		
-func init_weapon(weapon: PackedScene) -> void:
-	WEAPONS.append(weapon)
+func add_weapon(weapon: PackedScene) -> void:
+	var instance = weapon.instantiate() as Weapon
+	#instance.visible = false
+	instance.shoot_projectile.connect(func(p): player_attack.emit(p))
+	$Inventory.call_deferred("add_child", instance)
+	player_add_weapon.emit(instance.get_icon())
 	
-	var _instance: Weapon = weapon.instantiate()
-	var timer = AttackCooldownTimer.new()
-	timer.weapon = weapon
-	timer.wait_time = 10.0 / _instance.ATTACK_RATE
-	timer.autostart = true
-	timer.timeout.connect(func(): attack(weapon))
-	$AttackTimers.add_child(timer)
-	_instance.queue_free()
-			
 func _process(delta):
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = direction * SPEED * delta * 1000
 	move_and_slide()
 	Globals.player_position = global_position
-
-func get_attack_direction() -> Vector2:
-	return (get_global_mouse_position() - global_position).normalized()
-	
-func attack(weapon: PackedScene) -> void:
-	var direction = get_attack_direction()
-	attack_signal.emit(weapon, global_position, direction)
 
 func hit(_damage: int) -> void:
 	if $Invulnerability.is_stopped():

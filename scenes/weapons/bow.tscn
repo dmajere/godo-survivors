@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dacn7tn6v1djl"]
+
+[ext_resource type="PackedScene" uid="uid://bxpp3ebjp7llt" path="res://scenes/weapons/base.tscn" id="1_qnwsa"]
+[ext_resource type="Script" path="res://scenes/weapons/wand.gd" id="2_l5gp4"]
+[ext_resource type="Texture2D" uid="uid://fyju30mmcbdf" path="res://graphics/item/weapon/ranged/shortbow_1.png" id="3_yl7yt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0llar"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ximn"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n26wh"]
+radius = 300.0
+
+[node name="Bow" instance=ExtResource("1_qnwsa")]
+script = ExtResource("2_l5gp4")
+DAMAGE = 10
+RATE = 100.0
+DURATION = 2.0
+PIERCE = 1
+PROJECTILE_SPEED = 300
+
+[node name="Icon" parent="." index="0"]
+texture = ExtResource("3_yl7yt")
+
+[node name="Visibility" type="Node" parent="." index="2"]
+
+[node name="Zone1" type="Area2D" parent="Visibility" index="0"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility/Zone1" index="0"]
+shape = SubResource("CircleShape2D_0llar")
+
+[node name="Zone2" type="Area2D" parent="Visibility" index="1"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility/Zone2" index="0"]
+shape = SubResource("CircleShape2D_6ximn")
+
+[node name="Zone3" type="Area2D" parent="Visibility" index="2"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility/Zone3" index="0"]
+shape = SubResource("CircleShape2D_n26wh")
+
+[connection signal="body_entered" from="Visibility/Zone1" to="." method="_on_visibility_body_entered"]
+[connection signal="body_entered" from="Visibility/Zone2" to="." method="_on_visibility_body_entered"]
+[connection signal="body_entered" from="Visibility/Zone3" to="." method="_on_visibility_body_entered"]

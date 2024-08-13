@@ -10,6 +10,7 @@ var health_icon = load("res://graphics/gui/invocations/elyvilon_heal_other.png")
 var knockback_icon = load("res://graphics/gui/skills/fighting.png")
 
 @onready var player = $Moving/Human
+@onready var inventory = $Moving/Human/Inventory
 @onready var enemies = $Moving/Enemies
 @onready var projectiles = $Moving/Projectiles
 @onready var level_up_menu = $InGameMenu/LevelUpMenu
@@ -32,20 +33,7 @@ var knockback_icon = load("res://graphics/gui/skills/fighting.png")
 	),
 ]
 
-func _ready():
-	# TODO: figure out how to have class properties, to avoid 
-	# object instantiation to read icon
-	for weapon: PackedScene in player.WEAPONS:
-		var _instance = weapon.instantiate() as Weapon
-		$InGameMenu/WeaponList.append(_instance.icon)
-		_instance.queue_free()
 	
-func _on_human_attack_signal(weapon: PackedScene, pos: Vector2, dir:Vector2) -> void:
-	var instance = weapon.instantiate() as Weapon
-	instance.set_attack_position(pos, dir)
-	instance.scale = Vector2(4, 4)
-	projectiles.call_deferred("add_child", instance)
-
 func spawn_experience(pos: Vector2):
 	# TODO: random drop probability
 	# TODO: rare big exp drop
@@ -134,3 +122,9 @@ func _on_human_player_level():
 
 func _on_level_up_menu_closed():
 	$Moving.get_tree().paused = false
+
+func _on_human_player_attack(projectile: Node2D):
+	projectiles.call_deferred("add_child", projectile)
+
+func _on_human_player_add_weapon(icon: Texture2D):
+	$InGameMenu/WeaponList.append(icon)

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://24cweh3v5g3w"]
+
+[ext_resource type="PackedScene" uid="uid://cvet5bfb8lt4e" path="res://scenes/projectiles/area_projectile.tscn" id="1_x7iai"]
+[ext_resource type="Texture2D" uid="uid://bnvm0rqbjfyxn" path="res://graphics/effect/arrow_2.png" id="2_1l4vy"]
+[ext_resource type="Script" path="res://scenes/projectiles/arrow.gd" id="2_t5ub0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eg64u"]
+size = Vector2(22, 6)
+
+[node name="Arrow" instance=ExtResource("1_x7iai")]
+scale = Vector2(3, 3)
+script = ExtResource("2_t5ub0")
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_eg64u")
+
+[node name="Image" parent="." index="1"]
+position = Vector2(0, 1)
+texture = ExtResource("2_1l4vy")
