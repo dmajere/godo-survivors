@@ -1,4 +1,7 @@
 extends Control
+#TODO:
+# make configurable: allow to init with number of rows and cols
+# allow extend number of rows, cols?
 
 @onready var total_slots = 6;
 @onready var current_slot = 0;

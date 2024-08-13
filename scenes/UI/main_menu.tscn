@@ -1,0 +1,157 @@
+[gd_scene load_steps=6 format=3 uid="uid://bpgb8d6lgjeb3"]
+
+[ext_resource type="Texture2D" uid="uid://6ab6rhngrvu6" path="res://graphics/gui/startup/arena.png" id="1_qy0vw"]
+[ext_resource type="Script" path="res://scenes/UI/main_menu.gd" id="1_w5vm7"]
+[ext_resource type="Texture2D" uid="uid://coeqsrlfj0n5r" path="res://graphics/gui/startup/hints_mode.png" id="2_snp1s"]
+[ext_resource type="Texture2D" uid="uid://o2naxn8l5rgm" path="res://graphics/gui/spells/enchantment/projected_noise.png" id="3_c7n4a"]
+[ext_resource type="PackedScene" uid="uid://dyvhr2gul005i" path="res://scenes/UI/transition.tscn" id="5_75udh"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w5vm7")
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.583
+anchor_top = 0.638
+anchor_right = 0.583
+anchor_bottom = 0.638
+offset_left = -159.24
+offset_top = -178.18
+offset_right = -53.24
+offset_bottom = -59.18
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="Start" type="Button" parent="Main"]
+layout_mode = 2
+text = "Start"
+icon = ExtResource("1_qy0vw")
+
+[node name="Options" type="Button" parent="Main"]
+layout_mode = 2
+text = "Options"
+icon = ExtResource("2_snp1s")
+
+[node name="Exit" type="Button" parent="Main"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -550.0
+offset_top = 24.0
+offset_right = -371.0
+offset_bottom = 69.0
+grow_vertical = 2
+scale = Vector2(2, 2)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 93.0
+grow_vertical = 2
+
+[node name="OptionsButtons" type="VBoxContainer" parent="Options/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+alignment = 1
+
+[node name="Audio" type="Button" parent="Options/HBoxContainer/OptionsButtons"]
+layout_mode = 2
+text = "Audio"
+icon = ExtResource("3_c7n4a")
+
+[node name="OptionsBack" type="Button" parent="Options/HBoxContainer/OptionsButtons"]
+layout_mode = 2
+text = "Back"
+
+[node name="OptionsMenu" type="VBoxContainer" parent="Options/HBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+alignment = 1
+
+[node name="AudioOptions" type="Control" parent="Options/HBoxContainer/OptionsMenu"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/HBoxContainer/OptionsMenu/AudioOptions"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = -150.0
+offset_right = 374.0
+offset_bottom = 79.0
+
+[node name="Labels" type="VBoxContainer" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer"]
+layout_mode = 2
+
+[node name="Master" type="Label" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Master"
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Music"
+vertical_alignment = 1
+
+[node name="SoundFx" type="Label" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sound FX"
+vertical_alignment = 1
+
+[node name="Mute" type="Label" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Mute"
+vertical_alignment = 1
+
+[node name="Toggle" type="VBoxContainer" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="Master" type="HSlider" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Music" type="HSlider" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SoundFx" type="HSlider" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Mute" type="CheckBox" parent="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GameStartTransition" parent="." instance=ExtResource("5_75udh")]
+visible = false
+
+[connection signal="pressed" from="Main/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Main/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/HBoxContainer/OptionsButtons/OptionsBack" to="." method="_on_options_back_pressed"]
+[connection signal="pressed" from="Options/HBoxContainer/OptionsButtons/OptionsBack" to="." method="_on_back_pressed"]
+[connection signal="drag_ended" from="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle/Master" to="." method="_on_master_drag_ended"]
+[connection signal="drag_ended" from="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle/Music" to="." method="_on_music_drag_ended"]
+[connection signal="drag_ended" from="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle/SoundFx" to="." method="_on_sound_fx_drag_ended"]
+[connection signal="pressed" from="Options/HBoxContainer/OptionsMenu/AudioOptions/HBoxContainer/Toggle/Mute" to="." method="_on_mute_pressed"]
