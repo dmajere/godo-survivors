@@ -1,9 +1,9 @@
-extends HBoxContainer
+class_name Stat extends HBoxContainer
 
 @onready var name_label: Label = %Name
 @onready var value_label: Label = %Value
 @onready var icon_box: TextureRect = %Icon
-
+@onready var icon_mc = %MarginContainer
 
 @export var stat_name: String = "Stat":
 	set(value):
@@ -29,4 +29,5 @@ func _update_labels():
 	if value_label:
 		value_label.text = str(stat_value)
 	if icon_box:
-		icon_box.texture=  stat_icon
+		icon_box.texture = stat_icon
+		icon_mc.visible = true

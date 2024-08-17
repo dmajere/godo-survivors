@@ -35,7 +35,7 @@ var max_ranges: Dictionary = {
 	Tier.Normal: 40,
 }
 
-func _get_max_upgrades(tier: Tier, rarity: Rarity):
+func _get_max_upgrades():
 	match(tier):
 		Tier.Broken:
 			return 0

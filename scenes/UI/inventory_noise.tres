@@ -8,7 +8,7 @@ seed = 1024
 frequency = 0.0435
 
 [resource]
-width = 450
-height = 648
+width = 200
+height = 250
 color_ramp = SubResource("Gradient_i73cm")
 noise = SubResource("FastNoiseLite_m0bjl")

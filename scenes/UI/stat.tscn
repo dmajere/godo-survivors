@@ -4,17 +4,17 @@
 
 [node name="Stat" type="HBoxContainer"]
 anchors_preset = -1
-anchor_left = -0.004
-anchor_right = 0.102
+anchor_right = 0.105
 anchor_bottom = 0.044
-offset_left = 0.12
-offset_right = -0.560013
+offset_right = 0.599991
 offset_bottom = 0.159996
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0omox")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0

@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://eomacejllsgb"]
+[gd_scene load_steps=15 format=3 uid="uid://eomacejllsgb"]
 
+[ext_resource type="Script" path="res://scenes/UI/UI.gd" id="1_6qr5d"]
 [ext_resource type="Texture2D" uid="uid://p51raa78cckl" path="res://scenes/UI/inventory_noise.tres" id="1_he22y"]
 [ext_resource type="Texture2D" uid="uid://b4ywsro8lyaw5" path="res://graphics/gui/skills/fire_magic.png" id="2_csdqh"]
 [ext_resource type="PackedScene" uid="uid://lb034ysqi1k1" path="res://scenes/UI/stat.tscn" id="2_x286k"]
@@ -41,6 +42,7 @@ offset_right = 225.0
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6qr5d")
 
 [node name="CharacterUI" type="Control" parent="."]
 anchors_preset = 0
@@ -212,205 +214,49 @@ color = Color(0.999618, 0.963381, 0.971629, 1)
 layout_mode = 2
 theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 3
-columns = 8
+columns = 4
 
 [node name="Slot" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot2" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot3" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot4" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot5" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot6" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot7" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot8" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot9" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot10" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot11" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="Slot12" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot13" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot14" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot15" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot16" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot17" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot18" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot19" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot20" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot21" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot22" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot23" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot24" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot25" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot26" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot27" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot28" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot29" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot30" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot31" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot32" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot33" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot34" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot35" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot36" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot37" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot38" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot39" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot40" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot41" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot42" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot43" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot44" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot45" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot46" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot47" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-
-[node name="Slot48" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
-custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 
 [node name="InventoryGrid" type="GridContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 3
 theme_override_constants/v_separation = 3
-columns = 8
+columns = 4
 script = ExtResource("6_l0wmi")
 
 [node name="Level" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails"]

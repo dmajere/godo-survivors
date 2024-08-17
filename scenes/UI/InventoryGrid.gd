@@ -19,17 +19,27 @@ func _ready():
 	
 	inventory.item_added.connect(_on_item_added)
 	inventory.item_removed.connect(_on_item_removed)
-	
+
+func find(item: Item) -> UIItem:
+	for c: UIItem in get_children():
+		if c.item == item:
+			return c
+	return 
 
 func _on_item_added(item: Item, _qty: int, _total: int) -> void:
-	var ui_icon = ui_item.instantiate() as UIItem 
+	var ui_icon: UIItem = find(item)
+	if ui_icon:
+		ui_icon.update()
+		return
+	
+	ui_icon = ui_item.instantiate() as UIItem 
 	ui_icon.item = item
 	add_child(ui_icon)
 	
 func _on_item_removed(item: Item, _qty: int, total: int) -> void:
-	for ui_icon:UIItem in get_children():
-		if ui_icon.item == item:
-			if total == 0:
-				remove_child(ui_icon)
-			else:
-				ui_icon._update()
+	var ui_icon: UIItem = find(item)
+	if ui_icon:
+		if total == 0:
+			remove_child(ui_icon)
+		else:
+			ui_icon.update()

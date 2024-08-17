@@ -36,3 +36,6 @@ static var RARITY_COLORS: Array[Color] = [
 	Color(.56, .21, .0, 1),
 	Color(.54, .34, .12, 1),
 ]
+
+func get_stats() -> Dictionary:
+	return {}

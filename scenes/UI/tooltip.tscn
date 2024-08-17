@@ -1,0 +1,224 @@
+[gd_scene load_steps=7 format=3 uid="uid://c3xqdjo7djyoj"]
+
+[ext_resource type="Texture2D" uid="uid://p51raa78cckl" path="res://scenes/UI/inventory_noise.tres" id="1_iuny5"]
+[ext_resource type="Script" path="res://scenes/UI/tooltip.gd" id="1_iw06g"]
+
+[sub_resource type="Gradient" id="Gradient_gih1k"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2nvk0"]
+gradient = SubResource("Gradient_gih1k")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_37eev"]
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 3
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7llk6"]
+grow_begin = -11.0
+grow_end = -11.0
+thickness = 3
+
+[node name="Tooltip" type="Control"]
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_iw06g")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.466667)
+custom_minimum_size = Vector2(200, 250)
+layout_mode = 1
+offset_right = 201.0
+offset_bottom = 250.0
+texture = ExtResource("1_iuny5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Status" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Status"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer/Status/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Status"
+
+[node name="Info" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="FrameColorRect" type="ColorRect" parent="VBoxContainer/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Info"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="ItemBGRect" type="ColorRect" parent="VBoxContainer/Info/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+color = Color(1, 1, 0.188235, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Info/MarginContainer"]
+modulate = Color(1, 1, 1, 0.721569)
+layout_mode = 2
+texture = SubResource("GradientTexture2D_2nvk0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Info/MarginContainer"]
+layout_mode = 2
+
+[node name="BasicInfo" type="Control" parent="VBoxContainer/Info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer"]
+layout_mode = 2
+
+[node name="Stats" type="Control" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="StatsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer/Stats"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -4.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/separator = SubResource("StyleBoxLine_37eev")
+
+[node name="Icon" type="Control" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/BasicInfo/MarginContainer/HBoxContainer/Icon"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+expand_mode = 2
+
+[node name="Description" type="Control" parent="VBoxContainer/Info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/Description"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DescriptionLabel" type="Label" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/Description/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/Description/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_styles/separator = SubResource("StyleBoxLine_7llk6")
+
+[node name="Requirements" type="Control" parent="VBoxContainer/Info/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/Requirements"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -101.0
+offset_top = -19.5
+offset_bottom = 20.5
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RequirementLabel" type="Label" parent="VBoxContainer/Info/MarginContainer/VBoxContainer/Requirements/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 1
