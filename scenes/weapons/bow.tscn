@@ -13,7 +13,7 @@ DAMAGE = 10
 RATE = 10.0
 DURATION = 2.0
 PIERCE = 1
-PROJECTILE_SPEED = 300
+PROJECTILE_SPEED = 500
 
 [node name="Icon" parent="." index="0"]
 texture = ExtResource("3_yl7yt")

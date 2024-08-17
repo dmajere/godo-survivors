@@ -1,0 +1,471 @@
+[gd_scene load_steps=14 format=3 uid="uid://eomacejllsgb"]
+
+[ext_resource type="Texture2D" uid="uid://p51raa78cckl" path="res://scenes/UI/inventory_noise.tres" id="1_he22y"]
+[ext_resource type="Texture2D" uid="uid://b4ywsro8lyaw5" path="res://graphics/gui/skills/fire_magic.png" id="2_csdqh"]
+[ext_resource type="PackedScene" uid="uid://lb034ysqi1k1" path="res://scenes/UI/stat.tscn" id="2_x286k"]
+[ext_resource type="Texture2D" uid="uid://r7enxrx0kubi" path="res://graphics/gui/skills/dodging.png" id="3_kis1s"]
+[ext_resource type="Texture2D" uid="uid://biee3786u6odf" path="res://graphics/gui/spells/enchantment/haste_old.png" id="4_ev8ph"]
+[ext_resource type="Texture2D" uid="uid://b275k1fdvsfoc" path="res://graphics/gui/skills/hexes.png" id="5_ker6w"]
+[ext_resource type="PackedScene" uid="uid://bc3qxh7qg0ja5" path="res://scenes/UI/slot.tscn" id="6_40j4t"]
+[ext_resource type="Script" path="res://scenes/UI/InventoryGrid.gd" id="6_l0wmi"]
+
+[sub_resource type="Gradient" id="Gradient_1pjpv"]
+offsets = PackedFloat32Array(0, 0.993506, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.766234, 0.766234, 0.766234, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oefan"]
+noise_type = 5
+seed = 1024
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_62gac"]
+width = 440
+color_ramp = SubResource("Gradient_1pjpv")
+noise = SubResource("FastNoiseLite_oefan")
+
+[sub_resource type="Gradient" id="Gradient_81dhk"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qy68h"]
+gradient = SubResource("Gradient_81dhk")
+fill = 1
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -324.0
+offset_right = 225.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterUI" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 450.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="CharacterUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.47451, 0.47451, 0.47451, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CharacterUI"]
+modulate = Color(1, 1, 1, 0.592157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_62gac")
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Sections" type="VBoxContainer" parent="CharacterUI/MarginContainer"]
+layout_mode = 2
+
+[node name="Gun" type="Control" parent="CharacterUI/MarginContainer/Sections"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI/MarginContainer/Sections/Gun"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="CharacterUI/MarginContainer/Sections/Gun/MarginContainer"]
+layout_mode = 2
+color = Color(0.976793, 0.867583, 0.71344, 0.376471)
+
+[node name="TextureRect" type="TextureRect" parent="CharacterUI/MarginContainer/Sections/Gun/MarginContainer/ColorRect"]
+modulate = Color(1, 1, 1, 0.647059)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_qy68h")
+
+[node name="CharacterDetails" type="Control" parent="CharacterUI/MarginContainer/Sections"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(5, 5)
+
+[node name="Details" type="HBoxContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer"]
+layout_mode = 2
+
+[node name="Stats" type="VBoxContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Control" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BasicStats" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.912
+anchor_bottom = 1.0
+offset_right = 0.0239868
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats/MarginContainer"]
+layout_mode = 2
+
+[node name="Damage" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats/MarginContainer/VBoxContainer" instance=ExtResource("2_x286k")]
+layout_mode = 2
+stat_name = "Damage"
+stat_icon = ExtResource("2_csdqh")
+
+[node name="Rate" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats/MarginContainer/VBoxContainer" instance=ExtResource("2_x286k")]
+layout_mode = 2
+stat_name = "Rate"
+stat_icon = ExtResource("3_kis1s")
+
+[node name="Speed" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats/MarginContainer/VBoxContainer" instance=ExtResource("2_x286k")]
+layout_mode = 2
+stat_name = "Speed"
+stat_icon = ExtResource("4_ev8ph")
+
+[node name="Knockback" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Stats/BasicStats/MarginContainer/VBoxContainer" instance=ExtResource("2_x286k")]
+layout_mode = 2
+stat_name = "KBack"
+stat_icon = ExtResource("5_ker6w")
+
+[node name="Inventory" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabBar" type="TabBar" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer"]
+layout_mode = 2
+tab_count = 3
+tab_alignment = 1
+tab_close_display_policy = 2
+tab_0/title = "All"
+tab_1/title = "DMG"
+tab_2/title = "aim"
+
+[node name="Grid" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer"]
+layout_mode = 2
+color = Color(0.999618, 0.963381, 0.971629, 1)
+
+[node name="BGGrid" type="GridContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 8
+
+[node name="Slot" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot2" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot3" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot4" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot5" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot6" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot7" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot8" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot9" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot10" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot11" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot12" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot13" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot14" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot15" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot16" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot17" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot18" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot19" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot20" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot21" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot22" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot23" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot24" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot25" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot26" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot27" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot28" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot29" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot30" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot31" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot32" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot33" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot34" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot35" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot36" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot37" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot38" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot39" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot40" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot41" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot42" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot43" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot44" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot45" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot46" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot47" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Slot48" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer/BGGrid" instance=ExtResource("6_40j4t")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="InventoryGrid" type="GridContainer" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/MarginContainer/Details/Inventory/VBoxContainer/Grid/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 3
+theme_override_constants/v_separation = 3
+columns = 8
+script = ExtResource("6_l0wmi")
+
+[node name="Level" type="Control" parent="CharacterUI/MarginContainer/Sections/CharacterDetails"]
+layout_mode = 1
+anchor_top = 0.0605177
+anchor_bottom = 0.0605177
+offset_top = -46.086
+offset_right = 20.0
+offset_bottom = -26.086
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+scale = Vector2(1.5, 1.5)
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/Level"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000434256
+anchor_top = 0.000354385
+anchor_right = 0.000434303
+anchor_bottom = 0.000354385
+offset_left = -0.00868511
+offset_top = -0.00708848
+offset_right = 19.9913
+offset_bottom = 19.9929
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.803922, 0.498039, 0.196078, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/Level"]
+modulate = Color(1, 1, 1, 0.27451)
+layout_mode = 1
+anchors_preset = -1
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_he22y")
+expand_mode = 2
+
+[node name="Label" type="Label" parent="CharacterUI/MarginContainer/Sections/CharacterDetails/Level"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.9999
+offset_top = -6.10352e-05
+offset_right = 8.00006
+offset_bottom = 27.9999
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.785398
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "001"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://lb034ysqi1k1"]
+
+[ext_resource type="Script" path="res://scenes/UI/stat.gd" id="1_0omox"]
+
+[node name="Stat" type="HBoxContainer"]
+anchors_preset = -1
+anchor_left = -0.004
+anchor_right = 0.102
+anchor_bottom = 0.044
+offset_left = 0.12
+offset_right = -0.560013
+offset_bottom = 0.159996
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0omox")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="Icon" type="TextureRect" parent="MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.0
+expand_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="StatKV" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer2/StatKV"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 20
+vertical_alignment = 1
+max_lines_visible = 1
+
+[node name="Value" type="Label" parent="MarginContainer2/StatKV"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 2.0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1

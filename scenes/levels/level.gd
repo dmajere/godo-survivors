@@ -8,6 +8,9 @@ var green_eye: PackedScene = preload("res://scenes/enemies/green_eye.tscn")
 var speed_icon = load("res://graphics/gui/abilities/jump.png")
 var health_icon = load("res://graphics/gui/invocations/elyvilon_heal_other.png")
 var knockback_icon = load("res://graphics/gui/skills/fighting.png")
+var exp_rate_icon = load("res://graphics/gui/abilities/shaft_self.png")
+var damage_icon = load("res://graphics/gui/skills/axes.png")
+@export var EXP_SHARD_DROP_CHANCE: int = 10
 
 @onready var player = $Moving/Human
 @onready var inventory = $Moving/Human/Inventory
@@ -31,20 +34,33 @@ var knockback_icon = load("res://graphics/gui/skills/fighting.png")
 		"increase knockback",
 		func(): player.add_item(Globals.ItemType.KNOCKBACK_INC)
 	),
+	Option.new(
+		exp_rate_icon,
+		"increase exp rate",
+		func(): player.add_item(Globals.ItemType.EXP_RATE_INC)
+	),
+	Option.new(
+		damage_icon,
+		"increase damage",
+		func(): player.add_item(Globals.ItemType.DAMAGE_INC)
+	),
 ]
 
+func roll_dice(max_chance: int) -> int:
+	return randi()%max_chance
 	
 func spawn_experience(pos: Vector2):
-	# TODO: random drop probability
-	# TODO: rare big exp drop
-	var instance = item.instantiate() as Item
-	instance.item_type = Globals.ItemType.EXP_SMALL
-	instance.position = pos
-	$Items.call_deferred("add_child", instance)
+	var res = roll_dice(100)
+	if res <= EXP_SHARD_DROP_CHANCE:
+		var instance = item.instantiate() as Item
+		instance.item_type = Globals.ItemType.EXP_SMALL
+		if res <= EXP_SHARD_DROP_CHANCE / 10:
+			instance.item_type = Globals.ItemType.EXP_BIG
+		instance.position = pos
+		$Items.call_deferred("add_child", instance)
 
 func _on_spawn_timer_timeout():
 	var pos = get_random_offscreen_position()
-	#left.y = randi_range(-distance.y, distance.y)
 	var instance = green_eye.instantiate() as Monster
 	instance.position = pos
 	instance.scale = Vector2(3, 3)
@@ -114,8 +130,9 @@ func _on_human_player_death():
 	get_tree().quit()
 
 func _on_human_player_level():
-	#TODO: select 3 random options
-	var options = level_up_options
+	var options = []
+	for _i in 3:
+		options.append(level_up_options[randi()%level_up_options.size()])
 	level_up_menu.configure(options)
 	level_up_menu.open()
 	$Moving.get_tree().paused = true

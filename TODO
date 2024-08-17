@@ -4,3 +4,10 @@ Weapons
 * wand: sends projectile at some rate to closest enemy
 * knife: fire in front
 * bible: cicles around
+
+
+Modules:
+
+* amplifier - increase output damage
+* splitter - splits output allows multiple directions
+* focus - changes type of projectile horizontal length

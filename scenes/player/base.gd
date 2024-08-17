@@ -11,15 +11,15 @@ signal player_add_weapon(icon)
 @export var BASE_WEAPON: PackedScene;
 @export var BASE_KNOCKBACK: int = 50;
 @export var BASE_HEALTH: int = 100;
-@export var BASE_EXP_RATE: int = 1;
+@export var BASE_EXP_RATE: float = 1.0;
 
 var SPEED: int;
 var HEALTH: int;
 var KNOCKBACK: int;
 var WEAPONS: Array;
 var EXP_RATE: int;
-@onready var Experience: int = 0
-@onready var EXP_TO_NEXT_LEVEL: int = 10
+@onready var Experience: float = 0
+@onready var EXP_TO_NEXT_LEVEL: int = 100
 
 class AttackCooldownTimer extends Timer:
 	var weapon: PackedScene;
@@ -36,7 +36,6 @@ func _ready():
 		
 func add_weapon(weapon: PackedScene) -> void:
 	var instance = weapon.instantiate() as Weapon
-	#instance.visible = false
 	instance.shoot_projectile.connect(func(p): player_attack.emit(p))
 	$Inventory.call_deferred("add_child", instance)
 	player_add_weapon.emit(instance.get_icon())
@@ -54,7 +53,6 @@ func hit(_damage: int) -> void:
 			player_death.emit()
 
 func add_item(item_type: Globals.ItemType) -> void:
-	# TODO: add other item types
 	if item_type == Globals.ItemType.SPEED_INC:
 		SPEED += 10
 	elif item_type == Globals.ItemType.HEALTH_INC:
@@ -63,9 +61,19 @@ func add_item(item_type: Globals.ItemType) -> void:
 		KNOCKBACK += 10
 	elif item_type == Globals.ItemType.EXP_SMALL:
 		Experience += 10 * EXP_RATE
-		if Experience >= EXP_TO_NEXT_LEVEL:
-			player_level.emit()
-			# TODO: increase next level cap
+	elif item_type == Globals.ItemType.EXP_BIG:
+		Experience += 50 * EXP_RATE
+	elif item_type == Globals.ItemType.DAMAGE_INC:
+		for weapon in $Inventory.get_children():
+			weapon.DAMAGE += 5
+	elif item_type == Globals.ItemType.EXP_RATE_INC:
+		EXP_RATE += 0.1
+
+	if Experience >= EXP_TO_NEXT_LEVEL:
+		print(Experience, EXP_TO_NEXT_LEVEL)
+		EXP_TO_NEXT_LEVEL += EXP_TO_NEXT_LEVEL * 1.1
+		player_level.emit()
+		
 
 func get_camera() -> Camera2D:
 	return $Camera2D

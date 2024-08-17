@@ -9,8 +9,11 @@ enum ItemType {
 	SPEED_INC,
 	HEALTH_INC,
 	KNOCKBACK_INC,
+	DAMAGE_INC,
+	EXP_RATE_INC,
 	
 	EXP_SMALL,
+	EXP_BIG,
 }
 
 var player_position: Vector2
