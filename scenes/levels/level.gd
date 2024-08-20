@@ -52,7 +52,7 @@ func roll_dice(max_chance: int) -> int:
 func spawn_experience(pos: Vector2):
 	var res = roll_dice(100)
 	if res <= EXP_SHARD_DROP_CHANCE:
-		var instance = item.instantiate() as Item
+		var instance = item.instantiate() as Drop
 		instance.item_type = Globals.ItemType.EXP_SMALL
 		if res <= EXP_SHARD_DROP_CHANCE / 10:
 			instance.item_type = Globals.ItemType.EXP_BIG
