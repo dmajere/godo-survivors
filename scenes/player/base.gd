@@ -17,9 +17,9 @@ var SPEED: int;
 var HEALTH: int;
 var KNOCKBACK: int;
 var WEAPONS: Array;
-var EXP_RATE: int;
+var EXP_RATE: float;
 @onready var Experience: float = 0
-@onready var EXP_TO_NEXT_LEVEL: int = 100
+@onready var EXP_TO_NEXT_LEVEL: float = 100.0
 
 class AttackCooldownTimer extends Timer:
 	var weapon: PackedScene;

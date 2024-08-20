@@ -8,10 +8,10 @@ func _ready():
 	
 func get_target_direction() -> Vector2:
 	if targets:
-		return pick_closest_target(targets)
+		return pick_closest_target()
 	return Vector2.ZERO
 
-func pick_closest_target(targets) -> Vector2:
+func pick_closest_target() -> Vector2:
 	var target_list = targets.keys()
 	var pick = target_list[0]
 	var distance = (pick.position - Globals.player_position).length()

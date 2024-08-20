@@ -54,7 +54,7 @@ func spawn_experience(pos: Vector2):
 	if res <= EXP_SHARD_DROP_CHANCE:
 		var instance = item.instantiate() as Drop
 		instance.item_type = Globals.ItemType.EXP_SMALL
-		if res <= EXP_SHARD_DROP_CHANCE / 10:
+		if res <= EXP_SHARD_DROP_CHANCE / 10.0:
 			instance.item_type = Globals.ItemType.EXP_BIG
 		instance.position = pos
 		$Items.call_deferred("add_child", instance)
