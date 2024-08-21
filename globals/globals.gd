@@ -5,6 +5,8 @@ var music_sound: int = 100
 var sound_fx: int = 100
 var mute: bool = false
 
+
+# TODO: move away
 enum ItemType {
 	SPEED_INC,
 	HEALTH_INC,

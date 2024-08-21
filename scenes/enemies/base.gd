@@ -1,5 +1,4 @@
-extends CharacterBody2D
-class_name Monster
+class_name Monster extends CharacterBody2D
 
 signal enemy_died(pos: Vector2)
 
@@ -33,4 +32,3 @@ func _on_attack_area_body_entered(body):
 		body.hit(DAMAGE)
 		var direction = (position - body.position).normalized()
 		position += direction * body.KNOCKBACK
-

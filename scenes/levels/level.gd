@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 var item: PackedScene = preload("res://scenes/items/base.tscn")
 var green_eye: PackedScene = preload("res://scenes/enemies/green_eye.tscn")
 
